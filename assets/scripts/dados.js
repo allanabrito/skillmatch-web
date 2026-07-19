@@ -1,11 +1,20 @@
 import { criarObjetosVagas } from "./motor.js";
 
-// ================================
-// CARREGAR VAGAS (FETCH)
-// ================================
+const CHAVE = "perfil-candidato";
+
+// ========================================
+// CARREGAR VAGAS
+// ========================================
 
 export async function carregarVagas() {
+
+    const areaVagas = document.getElementById("vagas");
+
     try {
+
+        if (areaVagas) {
+            areaVagas.innerHTML = "<p>Carregando vagas...</p>";
+        }
 
         const resposta = await fetch("./assets/dados/vagas.json");
 
@@ -16,24 +25,35 @@ export async function carregarVagas() {
         const vagas = await resposta.json();
 
         if (vagas.length === 0) {
+
+            if (areaVagas) {
+                areaVagas.innerHTML = "<p>Nenhuma vaga encontrada.</p>";
+            }
+
             return [];
+
         }
 
         return criarObjetosVagas(vagas);
 
     } catch (erro) {
-        console.error(erro);
+
+        console.error("Erro:", erro);
+
+        if (areaVagas) {
+            areaVagas.innerHTML = "<p>Erro ao carregar as vagas.</p>";
+        }
+
         return [];
+
     }
+
 }
 
-// ================================
-// LOCAL STORAGE
-// ================================
+// ========================================
+// SALVAR PERFIL
+// ========================================
 
-const CHAVE = "perfil-candidato";
-
-// Salvar perfil
 export function salvarPerfil(candidato) {
 
     localStorage.setItem(
@@ -43,7 +63,10 @@ export function salvarPerfil(candidato) {
 
 }
 
-// Carregar perfil
+// ========================================
+// CARREGAR PERFIL
+// ========================================
+
 export function carregarPerfil() {
 
     const perfil = localStorage.getItem(CHAVE);
@@ -56,3 +79,12 @@ export function carregarPerfil() {
 
 }
 
+// ========================================
+// LIMPAR PERFIL
+// ========================================
+
+export function limparPerfil() {
+
+    localStorage.removeItem(CHAVE);
+
+}

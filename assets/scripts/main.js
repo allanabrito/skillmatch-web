@@ -5,53 +5,85 @@ import {
 
 import {
     carregarVagas,
-    salvarPerfil
+    salvarPerfil,
+    carregarPerfil
 } from "./dados.js";
 
 import {
+    limparResultados,
     renderizarVagas,
     renderizarMelhorVaga
 } from "./ui.js";
 
-console.log("Main carregado");
-
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Sistema iniciado");
-    iniciarSistema();
-});
+document.addEventListener("DOMContentLoaded", iniciarSistema);
 
 async function iniciarSistema() {
 
     const vagas = await carregarVagas();
+    const perfil = carregarPerfil();
+
+if (perfil) {
+    document.getElementById("nome").value = perfil.nome;
+    document.getElementById("area").value = perfil.area;
+    document.getElementById("habilidades").value = perfil.habilidades.join(", ");
+    document.getElementById("experiencia").value = perfil.experienciaMeses;
+}
 
     const formulario = document.getElementById("form-perfil");
 
     formulario.addEventListener("submit", function (event) {
 
-        console.log("clique no botão de enviar");
-
         event.preventDefault();
 
+        const nome = document.getElementById("nome").value.trim();
+
+        const area = document.getElementById("area").value;
+
+        const habilidades = document
+            .getElementById("habilidades")
+            .value
+            .trim();
+
+        const experiencia = Number(
+            document.getElementById("experiencia").value
+        );
+
+        if (!nome) {
+            alert("O nome é obrigatório.");
+            document.getElementById("nome").focus();
+            return;
+        }
+
+        if (!habilidades) {
+            alert("Informe pelo menos uma habilidade.");
+            document.getElementById("habilidades").focus();
+            return;
+        }
+
+        if (isNaN(experiencia) || experiencia <= 0) {
+            alert("Informe uma experiência válida em meses.");
+            document.getElementById("experiencia").focus();
+            return;
+        }
+
         const candidato = new Candidato(
-            document.getElementById("nome").value,
-            document.getElementById("area").value,
-            document
-                .getElementById("habilidades")
-                .value
+            nome,
+            area,
+            habilidades
                 .split(",")
                 .map(skill => skill.trim()),
-            Number(document.getElementById("experiencia").value)
+            experiencia
         );
 
         salvarPerfil(candidato);
 
-       const resultado = executarAnalise(candidato, vagas);
+        limparResultados();
 
-console.log(resultado);
+        const resultado = executarAnalise(candidato, vagas);
 
-renderizarVagas(resultado.resultados);
+        renderizarVagas(resultado.resultados);
 
-renderizarMelhorVaga(
+        renderizarMelhorVaga(
             resultado.melhorVaga,
             resultado.recomendacao
         );
