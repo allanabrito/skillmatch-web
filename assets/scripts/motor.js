@@ -3,13 +3,14 @@
 // ========================================
 
 export class Vaga {
-    constructor(id, empresa, cargo, requisitos, salario, modalidade) {
+    constructor(id, empresa, cargo, requisitos, salario, modalidade, stack) {
         this.id = id;
         this.empresa = empresa;
         this.cargo = cargo;
         this.requisitos = requisitos;
         this.salario = salario;
         this.modalidade = modalidade;
+        this.stack = stack;
     }
 
     calcularCompatibilidade(candidato) {
@@ -55,22 +56,22 @@ export class VagaFrontEnd extends Vaga {
             cargo,
             requisitos,
             salario,
-            modalidade
+            modalidade,
+            stack
         );
-
-        this.stack = stack;
 
     }
 
     obterDescricao() {
-     return `${this.cargo} | Stack: ${this.stack}`;
-}
+        return `${this.cargo} | Stack: ${this.stack}`;
+    }
 
 }
 
 // ========================================
 
 export class Candidato {
+
     constructor(
         nome,
         area,
@@ -86,6 +87,7 @@ export class Candidato {
     }
 
 }
+
 // ========================================
 // CLASSIFICAÇÃO
 // ========================================
@@ -103,15 +105,12 @@ export function classificarCompatibilidade(porcentagem) {
     return "Baixa";
 
 }
-
 // ========================================
 // CALCULAR MATCH
 // ========================================
 
 export function calcularMatch(candidato, vaga) {
-
     return vaga.calcularCompatibilidade(candidato);
-
 }
 
 // ========================================
@@ -123,7 +122,7 @@ export function filtrarVagasPorNivel(candidato, vagas) {
     return vagas.filter(vaga =>
         vaga.modalidade === candidato.area ||
         candidato.area === "" ||
-        candidato.area === vaga.area
+        vaga.modalidade === "Full Stack"
     );
 
 }
@@ -131,6 +130,7 @@ export function filtrarVagasPorNivel(candidato, vagas) {
 // ========================================
 // MELHOR VAGA
 // ========================================
+
 export function acharMelhorVaga(candidato, vagas) {
 
     return vagas.reduce((melhor, vaga) => {
@@ -151,42 +151,29 @@ export function acharMelhorVaga(candidato, vagas) {
 
 }
 // ========================================
-// CLOSURE
+// RECOMENDAÇÃO
 // ========================================
 
-export function criarContadorDeAnalises() {
+export function recomendarEstudo(vaga, candidato) {
 
-    let totalDeAnalises = 0;
+    const resultado = vaga.calcularCompatibilidade(candidato);
 
-    return function () {
-        totalDeAnalises++;
-        return totalDeAnalises;
-    };
-
-}
-
-// ========================================
-// CALLBACK
-// ========================================
-
-export function executarCallback(resultado, callback) {
-
-    if (typeof callback === "function") {
-        callback(resultado);
+    if (resultado.habilidadesFaltantes.length === 0) {
+        return "Você atende todos os requisitos da vaga.";
     }
 
-}
+    return `Estude: ${resultado.habilidadesFaltantes.join(", ")} ⁠`;
 
-// ========================================
+}
+    // ========================================
 // EXECUTAR ANÁLISE
 // ========================================
 
-export function executarAnalise(candidato, vagas, callback) {
+export function executarAnalise(candidato, vagas, callback = null) {
 
     const resultados = vagas.map(vaga => {
 
-        const compatibilidade =
-            vaga.calcularCompatibilidade(candidato);
+        const compatibilidade = vaga.calcularCompatibilidade(candidato);
 
         return {
             vaga,
@@ -195,11 +182,9 @@ export function executarAnalise(candidato, vagas, callback) {
 
     });
 
-    const melhorVaga =
-        acharMelhorVaga(candidato, vagas);
+    const melhorVaga = acharMelhorVaga(candidato, vagas);
 
-    const recomendacao =
-        recomendarEstudo(melhorVaga, candidato);
+    const recomendacao = recomendarEstudo(melhorVaga, candidato);
 
     const resultadoFinal = {
         resultados,
@@ -207,20 +192,21 @@ export function executarAnalise(candidato, vagas, callback) {
         recomendacao
     };
 
-    executarCallback(resultadoFinal, callback);
+    if (callback) {callback(resultadoFinal);
+
+    }
 
     return resultadoFinal;
 
 }
 
 // ========================================
-// TRANSFORMAR JSON EM OBJETOS
+// CONVERTER JSON EM OBJETOS
 // ========================================
 
 export function criarObjetosVagas(listaDeVagas) {
 
     return listaDeVagas.map(vaga =>
-
         new VagaFrontEnd(
             vaga.id,
             vaga.empresa,
@@ -230,7 +216,6 @@ export function criarObjetosVagas(listaDeVagas) {
             vaga.modalidade,
             vaga.stack
         )
-
     );
 
 }
