@@ -1,73 +1,114 @@
-<main>
-    <head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SkillMatch Web</title>
 
-    <meta name="description"
+    <meta
+        name="description"
         content="Sistema para análise de compatibilidade entre candidatos e vagas de tecnologia.">
 
     <link rel="stylesheet" href="./assets/styles/index.style.css">
 </head>
 
-    <section id="perfil">
+<body>
 
-        <h2>Perfil do Candidato</h2>
+    <header>
+        <h1>SkillMatch Web</h1>
+        <p>Encontre a vaga mais compatível com seu perfil.</p>
+    </header>
 
-        <form id="form-perfil">
+    <main>
 
-            <label for="nome">Nome</label>
-            <input
-                type="text"
-                id="nome"
-                required
-            >
+        <section id="perfil">
 
-            <label for="area">Área</label>
-            <select id="area">
+            <h2>Perfil do Candidato</h2>
 
-                <option value="Front-End">Front-End</option>
-                <option value="Full Stack">Full Stack</option>
+            <form id="form-perfil">
 
-            </select>
+                <label for="nome">Nome</label>
 
-            <label for="habilidades">
-                Habilidades
-            </label>
+                <input
+                    type="text"
+                    id="nome"
+                    required
+                    aria-label="Nome do candidato"
+                    title="Digite seu nome">
 
-            <input
-                type="text"
-                id="habilidades"
-                placeholder="HTML, CSS, JavaScript..."
-            >
+                <label for="area">Área</label>
 
-            <label for="experiencia">
-                Experiência (meses)
-            </label>
+                <select
+                    id="area"
+                    aria-label="Área de atuação"
+                    title="Selecione sua área">
 
-            <input
-                type="number"
-                id="experiencia"
-            >
+                    <option value="Front-End">Front-End</option>
+                    <option value="Full Stack">Full Stack</option>
 
-            <button type="submit">
+                </select>
 
-                Analisar Perfil
+                <label for="habilidades">Habilidades</label>
 
-            </button>
+                <input
+                    type="text"
+                    id="habilidades"
+                    placeholder="HTML, CSS, JavaScript..."
+                    aria-label="Habilidades do candidato"
+                    title="Digite suas habilidades separadas por vírgulas">
 
-        </form>
+                <label for="experiencia">
+                    Experiência (meses)
+                </label>
 
-    </section>
+                <input
+                    type="number"
+                    id="experiencia"
+                    aria-label="Experiência em meses"
+                    title="Digite sua experiência em meses">
 
-    <section id="vagas">
+                <button
+                    type="submit"
+                    aria-label="Analisar perfil"
+                    title="Clique para analisar seu perfil">
 
-    </section>
+                    Analisar Perfil
 
-    <section id="melhor-vaga">
+                </button>
 
-    </section>
+            </form>
 
-</main>
-<script type="module" src="./assets/scripts/main.js"></script>
+        </section>
+
+        <section id="vagas">
+
+            <h2>Vagas Compatíveis</h2>
+
+        </section>
+
+        <section id="melhor-vaga">
+
+            <h2>🏆 Melhor vaga para você</h2>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>
+            ©️ 2026 SkillMatch Web - Projeto desenvolvido para o curso de Fundamentos da Programação com JavaScript.
+        </p>
+
+    </footer>
+
+    <script
+        type="module"
+        src="./assets/scripts/main.js">
+    </script>
+
+</body>
+
+</html>
