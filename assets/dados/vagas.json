@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "empresa": "Tech Solutions",
+    "cargo": "Desenvolvedor Front-End Júnior",
+    "requisitos": ["HTML", "CSS", "JavaScript", "React"],
+    "salario": 3500,
+    "modalidade": "Front-End",
+    "stack": "React"
+  },
+  {
+    "id": 2,
+    "empresa": "Data Corp",
+    "cargo": "Desenvolvedor Front-End",
+    "requisitos": ["HTML", "CSS", "JavaScript", "Git"],
+    "salario": 4000,
+    "modalidade": "Front-End",
+    "stack": "JavaScript"
+  },
+  {
+    "id": 3,
+    "empresa": "Startup X",
+    "cargo": "Desenvolvedor Full Stack",
+    "requisitos": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+    "salario": 5000,
+    "modalidade": "Full Stack",
+    "stack": "Node.js"
+  },
+  {
+    "id": 4,
+    "empresa": "Code Labs",
+    "cargo": "Desenvolvedor React",
+    "requisitos": ["React", "JavaScript", "Git", "CSS"],
+    "salario": 4200,
+    "modalidade": "Front-End",
+    "stack": "React"
+  }
+]
