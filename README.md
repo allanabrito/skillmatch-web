@@ -55,3 +55,11 @@ O planejamento e a organização das tarefas do projeto foram realizados utiliza
 🔗 *Quadro do Trello:*
 
 https://trello.com/b/jobgyGJt/skillmatch
+
+## 🎥 Vídeo de Demonstração
+
+Para apresentar o funcionamento do sistema, foi gravado um vídeo demonstrando a aplicação, explicando seu objetivo, a organização do projeto e as principais funcionalidades desenvolvidas.
+
+🔗 *Vídeo de apresentação:*
+
+https://drive.google.com/file/d/1z6uv3cIYqPC6iwci56wdOWJoj6qoSngf/view?usp=drivesdk
