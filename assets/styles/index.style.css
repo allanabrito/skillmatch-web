@@ -5,16 +5,20 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f6f9;
-    color: #333;
+    font-family: "Poppins", Arial, sans-serif;
+    background: #050816;
+    color: #f8fafc;
 }
 
-header {
-    background: #2563eb;
-    color: white;
-    text-align: center;
-    padding: 30px;
+header{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:#08111f;
+    border-bottom:1px solid #2dd4bf;
+    padding:30px 20px;
 }
 
 header h1 {
@@ -22,22 +26,22 @@ header h1 {
 }
 
 main {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
 section {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.1);
-    margin-bottom: 25px;
+    width: 100%;
+    background: #0d1526;
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 30px;
 }
-
 section h2 {
     margin-bottom: 20px;
-    color: #2563eb;
+    color: #2dd4bf;
 }
 
 form {
@@ -62,7 +66,7 @@ select {
 button {
     margin-top: 10px;
     padding: 12px;
-    background: #2563eb;
+    background: linear-gradient(90deg, #2dd4bf, #14b8a6);
     color: white;
     border: none;
     border-radius: 6px;
@@ -76,22 +80,32 @@ button:hover {
 }
 
 .card-vaga {
-    border: 1px solid #ddd;
-    border-left: 6px solid #2563eb;
-    border-radius: 8px;
-    padding: 18px;
-    margin-top: 15px;
-    background: #fafafa;
+    background: #111827;
+    color: #ffffff;
+    border: 1px solid #2dd4bf;
+    border-left: 6px solid #2dd4bf;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
 }
 
-.card-vaga h3 {
-    color: #2563eb;
-    margin-bottom: 10px;
+.card-vaga h3{
+    color:#2dd4bf;
+    margin-bottom:10px;
 }
 
-#melhor-vaga {
-    border: 2px solid #22c55e;
-    background: #f0fdf4;
+.card-vaga p{
+    color:#e5e7eb;
+    margin:8px 0;
+}
+
+.card-vaga strong{
+    color:#2dd4bf;
+}
+
+#melhor-vaga{
+    border:2px solid #2dd4bf;
+    background:#111827;
 }
 
 footer {
@@ -103,35 +117,38 @@ footer {
    RESPONSIVIDADE
 ========================== */
 
-@media (max-width: 768px) {
+@media (max-width:768px){
 
-    header {
-        padding: 20px;
+    main{
+        padding:15px;
     }
 
-    header h1 {
-        font-size: 24px;
+    #perfil,
+    #vagas,
+    #melhor-vaga{
+        max-width:100%;
     }
 
-    main {
-        margin: 15px;
-        padding: 10px;
+    section{
+        padding:20px;
     }
 
-    section {
-        padding: 15px;
+    input,
+    select,
+    button{
+        width:100%;
+        font-size:16px;
     }
 
-    button {
-        width: 100%;
-    }
-
-    .card-vaga {
-        padding: 15px;
-    }
-
+   .logo-img{
+    width:220px;
+    max-width:80%;
+    height:auto;
+    display:block;
+    margin:0 auto;
 }
 
+}
 @media (max-width: 480px) {
 
     body {
@@ -150,6 +167,46 @@ footer {
     select,
     button {
         font-size: 14px;
+    }
+
+}
+.logo-img{
+    width:480px;
+    height:auto;
+    display:block;
+    margin:0 auto 20px;
+}
+
+#perfil{
+    max-width:900px;
+    margin:0 auto;
+}
+
+#vagas,
+#melhor-vaga{
+    max-width:900px;
+    margin:30px auto;
+}
+@media(max-width:768px){
+
+    header{
+        padding:20px 15px;
+    }
+
+    .logo-img{
+        width:170px;
+        margin-bottom:15px;
+    }
+
+    form{
+        width:100%;
+    }
+
+    input,
+    select,
+    button{
+        width:100%;
+        display:block;
     }
 
 }

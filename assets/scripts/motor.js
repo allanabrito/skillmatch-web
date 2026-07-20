@@ -63,7 +63,7 @@ export class VagaFrontEnd extends Vaga {
     }
 
     obterDescricao() {
-        return `${this.cargo} | Stack: ${this.stack}`;
+        return `${this.cargo} | Stack: ${this.stack}`;
     }
 
 }
@@ -162,7 +162,7 @@ export function recomendarEstudo(vaga, candidato) {
         return "Você atende todos os requisitos da vaga.";
     }
 
-    return `Estude: ${resultado.habilidadesFaltantes.join(", ")} ⁠`;
+    return `Estude: ${resultado.habilidadesFaltantes.join(", ")}⁠`;
 
 }
     // ========================================
