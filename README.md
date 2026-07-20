@@ -47,3 +47,11 @@ README.md
 ## 👩‍💻 Desenvolvido por
 
 Allana Brito
+
+## 📋 Planejamento do Projeto
+
+O planejamento e a organização das tarefas do projeto foram realizados utilizando o Trello, permitindo acompanhar o desenvolvimento de cada etapa da aplicação.
+
+🔗 *Quadro do Trello:*
+
+https://trello.com/b/jobgyGJt/skillmatch
