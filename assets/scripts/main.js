@@ -79,14 +79,16 @@ if (perfil) {
 
         limparResultados();
 
-        const resultado = executarAnalise(candidato, vagas);
+       const resultado = executarAnalise(candidato, vagas);
 
-        renderizarVagas(resultado.resultados);
+console.log(resultado);
 
-        renderizarMelhorVaga(
-            resultado.melhorVaga,
-            resultado.recomendacao
-        );
+renderizarVagas(resultado.resultados);
+
+renderizarMelhorVaga(
+    resultado.melhorVaga,
+    resultado.recomendacao
+);
 
     });
 
